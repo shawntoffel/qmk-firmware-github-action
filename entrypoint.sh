@@ -2,14 +2,14 @@
 set -e
 
 path=$1
-name=$2
-flavor=$3
-keymap=$4
-destDir="/qmk_firmware/keyboards/$name"
+flavor=$2
+keymap=$3
+commit=$(git rev-parse --short HEAD)
+destDir="/qmk_firmware/keyboards/$commit"
 
 echo "==========================="
+echo "commit: '$commit'"
 echo "path: '$path'"
-echo "name: '$name'"
 echo "flavor: '$flavor'"
 echo "keymap: '$keymap'"
 echo "==========================="
@@ -20,5 +20,5 @@ cp -r "$path/"* "$destDir"
 
 echo "Starting compilation..."
 cd /qmk_firmware
-make "$name/$flavor:$keymap"
+make "$commit/$flavor:$keymap"
 echo "Done!"

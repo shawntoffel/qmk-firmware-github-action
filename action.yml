@@ -20,6 +20,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.path }}
-    - ${{ inputs.name }}
     - ${{ inputs.flavor }}
     - ${{ inputs.keymap }}
